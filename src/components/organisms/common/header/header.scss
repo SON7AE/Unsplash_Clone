@@ -1,0 +1,66 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 12px 24px;
+
+    border-bottom: 1px solid $color-gray-100;
+
+    &__logo-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+    }
+    &__function-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 12px;
+
+        &__button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 8px;
+
+            outline: none;
+            border: none;
+
+            border-radius: 6px;
+            text-align: center;
+
+            cursor: pointer;
+
+            &:first-child {
+                color: $color-gray-600;
+                background-color: $color-gray-100;
+            }
+            &:nth-child(2) {
+                background-color: $color-white-000;
+                border: 1px solid $color-gray-600;
+
+                padding: 7px;
+                gap: 2px;
+
+                .label {
+                    color: $color-gray-600;
+                }
+
+                .material-symbols-outlined {
+                    color: $color-gray-600;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
