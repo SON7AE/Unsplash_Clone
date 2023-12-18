@@ -1,4 +1,4 @@
-import "./dialog.scss"
+import './dialog.scss'
 
 interface Props {
     isOpen: boolean
@@ -22,7 +22,8 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                             <button className="close" onClick={closeDialog}>
                                 <span className="material-symbols-outlined">close</span>
                             </button>
-                            <span className="author-name">Evie Park</span>
+                            <img src={props.user.profile_image.small} alt="" className="profile" />
+                            <span className="author-name">{props.user.name}</span>
                         </div>
                         <div className="dialog__header__button-box">
                             <button className="bookmark">
@@ -44,11 +45,11 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                             </div>
                             <div className="item">
                                 <span className="item__label">업로드</span>
-                                <span className="item__value">{props.created_at.split("T")[0]}</span>
+                                <span className="item__value">{props.created_at.split('T')[0]}</span>
                             </div>
                             <div className="item">
                                 <span className="item__label">마지막 업데이트</span>
-                                <span className="item__value">{props.updated_at.split("T")[0]}</span>
+                                <span className="item__value">{props.updated_at.split('T')[0]}</span>
                             </div>
                             <div className="item">
                                 <span className="item__label">다운로드</span>
