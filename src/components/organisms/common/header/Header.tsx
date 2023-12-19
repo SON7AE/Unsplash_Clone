@@ -1,9 +1,22 @@
+import { useNavigate } from "react-router-dom"
 import "./header.scss"
 
-function Header() {
+interface Props {
+    funcSetValue: any
+    funcPage: any
+}
+
+function Header({ funcSetValue, funcPage }: Props) {
+    const navigate = useNavigate()
+    const moveToHome = () => {
+        navigate("/")
+        funcSetValue("korea")
+        funcPage(1)
+    }
+
     return (
         <div className="header">
-            <div className="header__logo-box">
+            <div className="header__logo-box" onClick={moveToHome}>
                 <span className="header__logo-box__logo">Unsplash</span>
             </div>
             <div className="header__function-box">

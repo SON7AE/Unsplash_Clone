@@ -55,7 +55,7 @@ function Home() {
 
     return (
         <div className="page">
-            <Header />
+            <Header funcSetValue={setSearchValue} funcPage={setPage} />
             <Navigation funcSetValue={setSearchValue} funcPage={setPage} />
             <div className="page__search-box">
                 <div className="page__search-box__search">
