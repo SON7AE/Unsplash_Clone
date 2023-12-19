@@ -1,4 +1,5 @@
-import './dialog.scss'
+import { useEffect } from "react"
+import "./dialog.scss"
 
 interface Props {
     isOpen: boolean
@@ -12,6 +13,18 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
         funcOpen(false)
         setDetail({})
     }
+    // ESC Key 입력시, 다이얼로그 닫기
+    useEffect(() => {
+        const escKeyModalClose = (e: any) => {
+            if (e.key === "Escape") {
+                funcOpen(false)
+                setDetail({})
+            }
+        }
+        // esc key를 눌렀을 때 Modal 창 close
+        window.addEventListener("keydown", escKeyModalClose) // 위에 만들어 놓은 escKeyModalClose를 keydown했을 때 이벤트로 등록한다. 즉, esc를 눌렀을 때 modal창 종료
+        return () => window.removeEventListener("keydown", escKeyModalClose) // 위의 이벤트를 제거
+    }, [funcOpen])
 
     const DialogContents = () => {
         return (
@@ -45,11 +58,11 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                             </div>
                             <div className="item">
                                 <span className="item__label">업로드</span>
-                                <span className="item__value">{props.created_at.split('T')[0]}</span>
+                                <span className="item__value">{props.created_at.split("T")[0]}</span>
                             </div>
                             <div className="item">
                                 <span className="item__label">마지막 업데이트</span>
-                                <span className="item__value">{props.updated_at.split('T')[0]}</span>
+                                <span className="item__value">{props.updated_at.split("T")[0]}</span>
                             </div>
                             <div className="item">
                                 <span className="item__label">다운로드</span>

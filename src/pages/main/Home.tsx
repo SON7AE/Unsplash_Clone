@@ -23,6 +23,7 @@ function Home() {
 
     const searchValue = null
 
+    // API 호출
     const getImages = async () => {
         try {
             const res = await axios.get(`${API_URL}?query=${searchValue}&client_id=${API_KEY}&page=${page}&per_page=${PER_PAGE}`)
