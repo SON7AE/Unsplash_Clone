@@ -13,4 +13,8 @@
         color: $color-black-900;
         border-bottom: 2px solid $color-black-900;
     }
+    &.inactive {
+        color: $color-gray-500;
+        border-bottom: none;
+    }
 }

@@ -56,7 +56,7 @@ function Home() {
     return (
         <div className="page">
             <Header />
-            <Navigation />
+            <Navigation funcSetValue={setSearchValue} />
             <div className="page__search-box">
                 <div className="page__search-box__search">
                     <span className="title">Unsplash Photo</span>
