@@ -28,10 +28,27 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
 
     // ----------------------------------------------------------------------------------------------------
 
-    const [isAdded, setIsAdded] = useState(false)
-    const addBookmark = () => {
-        window.alert("북마크 추가 기능은 완성하지 못했습니다.")
-        setIsAdded(!isAdded)
+    const addBookmark = (image: any) => {
+        const storedData = localStorage.getItem("bookmarks")
+        let newData = {
+            url: image.urls.small,
+            isActive: true,
+        }
+
+        if (storedData === null) {
+            let newArr = []
+            newArr.push(newData)
+
+            localStorage.setItem("bookmarks", JSON.stringify(newArr))
+        } else {
+            let newArr = []
+
+            const parsedData = JSON.parse(storedData)
+            newArr = [...parsedData]
+            newArr.push(newData)
+
+            localStorage.setItem("bookmarks", JSON.stringify(newArr))
+        }
     }
 
     const DialogContents = () => {
@@ -47,8 +64,8 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                             <span className="author-name">{props.user.name}</span>
                         </div>
                         <div className="dialog__header__button-box">
-                            <button className={`bookmark ${isAdded ? "active" : "inactive"}`} onClick={addBookmark}>
-                                <span className="material-symbols-outlined">favorite</span>
+                            <button className="bookmark" onClick={() => addBookmark(props)}>
+                                북마크 추가 +
                             </button>
                             <button className="download">다운로드</button>
                         </div>

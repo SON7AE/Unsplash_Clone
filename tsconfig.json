@@ -29,7 +29,8 @@
             "@types/*": ["src/types/*"],
             "@stores/*": ["src/stores/*"]
         },
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "strictNullChecks": false
     },
     "include": ["src"],
     "references": [{ "path": "./tsconfig.node.json" }]
