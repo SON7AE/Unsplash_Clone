@@ -58,7 +58,11 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                         </div>
                         <div className="dialog__footer__tags">
                             {props.tags.map((item: any) => {
-                                return <div className="tag">{item.title}</div>
+                                return (
+                                    <div className="tag" key={item.title}>
+                                        {item.title}
+                                    </div>
+                                )
                             })}
                         </div>
                     </div>
