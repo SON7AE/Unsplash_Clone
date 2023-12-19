@@ -47,7 +47,7 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                             <span className="author-name">{props.user.name}</span>
                         </div>
                         <div className="dialog__header__button-box">
-                            <button className={`bookmark ${isAdded ? "active" : "inactive"}`} onClick={() => addBookmark}>
+                            <button className={`bookmark ${isAdded ? "active" : "inactive"}`} onClick={addBookmark}>
                                 <span className="material-symbols-outlined">favorite</span>
                             </button>
                             <button className="download">다운로드</button>
