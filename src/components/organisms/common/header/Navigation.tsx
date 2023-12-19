@@ -5,6 +5,7 @@ import "./navigation.scss"
 
 interface Props {
     funcSetValue: any
+    funcPage: any
 }
 interface Navigation {
     index: number
@@ -14,7 +15,7 @@ interface Navigation {
     isActive: boolean
 }
 
-function Navigation({ funcSetValue }: Props) {
+function Navigation({ funcSetValue, funcPage }: Props) {
     const [menu, setMenu] = useState([
         {
             index: 0,
@@ -41,7 +42,7 @@ function Navigation({ funcSetValue }: Props) {
             index: 3,
             path: "/oneColor",
             label: "단색",
-            searchValue: "oneColor",
+            searchValue: "one color",
             isActive: false,
         },
         {
@@ -96,6 +97,7 @@ function Navigation({ funcSetValue }: Props) {
             if (item.path === location.pathname || location.pathname.includes(item.path)) {
                 item.isActive = true
                 funcSetValue(item.searchValue)
+                funcPage(1)
             } else {
                 item.isActive = false
             }

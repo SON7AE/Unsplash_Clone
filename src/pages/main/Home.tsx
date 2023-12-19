@@ -38,7 +38,7 @@ function Home() {
         getImages()
     }, [])
 
-    // 페이지네이션 페이지 변경시 API 호출
+    // 검색 값 변경시 API 호출
     useEffect(() => {
         setPage(1)
         getImages()
@@ -56,7 +56,7 @@ function Home() {
     return (
         <div className="page">
             <Header />
-            <Navigation funcSetValue={setSearchValue} />
+            <Navigation funcSetValue={setSearchValue} funcPage={setPage} />
             <div className="page__search-box">
                 <div className="page__search-box__search">
                     <span className="title">Unsplash Photo</span>
