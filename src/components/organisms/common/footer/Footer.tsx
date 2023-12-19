@@ -28,17 +28,17 @@ function Footer({ page, totalPage, funcPage }: Props) {
     // ----------------------------------------------------------------------------------------------------
 
     const moveToPrev = () => {
-        console.log("이전 버튼이 선택되었습니다.")
         if (step === 0) {
             return
         } else {
             setStep(step - 1)
+            funcPage(res[step - 1][0])
         }
     }
     const moveToNext = () => {
-        console.log("다음 버튼이 선택되었습니다.")
         if (step < res[step].length - 2) {
             setStep(step + 1)
+            funcPage(res[step + 1][0])
         } else {
             return
         }
@@ -50,11 +50,19 @@ function Footer({ page, totalPage, funcPage }: Props) {
     // ----------------------------------------------------------------------------------------------------
 
     const pages = res[step].map((item: number, index: number) => {
-        return (
-            <button className={`pagination__button ${index === page - 1 ? "active" : "inactive"}`} key={item} onClick={() => moveToPage(item)}>
-                {item}
-            </button>
-        )
+        if (item < 11) {
+            return (
+                <button className={`pagination__button ${index === page - 1 ? "active" : "inactive"} `} key={item} onClick={() => moveToPage(item)}>
+                    {item}
+                </button>
+            )
+        } else {
+            return (
+                <button className={`pagination__button ${index === page - 1 - step * 10 ? "active" : "inactive"} `} key={item} onClick={() => moveToPage(item)}>
+                    {item}
+                </button>
+            )
+        }
     })
 
     return (
