@@ -13,7 +13,8 @@ function SearchBox({ funcSetValue }: Props) {
     // 엔터키 입력
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
-            funcSetValue(text) // 작성한 Input 값 부모컴포넌트로 전달
+            if (text === "") return funcSetValue("korea")
+            else return funcSetValue(text) // 작성한 Input 값 부모컴포넌트로 전달
         }
     }
 

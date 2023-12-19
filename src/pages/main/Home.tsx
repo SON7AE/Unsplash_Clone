@@ -2,8 +2,8 @@ import Header from "@components/organisms/common/header/Header"
 import Navigation from "@components/organisms/common/header/Navigation"
 import SearchBox from "@components/molecules/common/SearchBox"
 import Footer from "@components/organisms/common/footer/Footer"
-import Card from "@/components/atoms/common/card/Card"
-import Dialog from "@/components/organisms/main/Dialog"
+import Card from "@components/atoms/common/card/Card"
+import Dialog from "@components/organisms/main/Dialog"
 import "./home.scss"
 
 import { useEffect, useState } from "react"
@@ -14,7 +14,7 @@ const API_KEY = "mXSaXElt5u9C4xAlm4bVyaiywj9ZRoElzokF0a9_HAU"
 const PER_PAGE = 30
 
 function Home() {
-    const [searchValue, setSearchValue] = useState("nature")
+    const [searchValue, setSearchValue] = useState("korea")
     const [images, setImages] = useState([]) // 초기 이미지 리스트 배열
     const [page, setPage] = useState(1) // 페이지
     const [totalPage, setTotalPage] = useState(0) // 전체 페이지 갯수
