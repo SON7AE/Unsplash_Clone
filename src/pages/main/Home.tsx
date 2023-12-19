@@ -14,6 +14,7 @@ const API_KEY = "mXSaXElt5u9C4xAlm4bVyaiywj9ZRoElzokF0a9_HAU"
 const PER_PAGE = 30
 
 function Home() {
+    const [searchValue, setSearchValue] = useState("nature")
     const [images, setImages] = useState([]) // 초기 이미지 리스트 배열
     const [page, setPage] = useState(1) // 페이지
     const [totalPage, setTotalPage] = useState(0) // 전체 페이지 갯수
@@ -21,13 +22,10 @@ function Home() {
     const [open, setOpen] = useState(false)
     const [dialogData, setDialogData] = useState({})
 
-    const searchValue = "one color"
-
     // API 호출
     const getImages = async () => {
         try {
             const res = await axios.get(`${API_URL}?query=${searchValue}&client_id=${API_KEY}&page=${page}&per_page=${PER_PAGE}`)
-            console.log(res)
             setImages(res.data.results)
             setTotalPage(res.data.total_pages)
         } catch (error) {
@@ -39,6 +37,12 @@ function Home() {
     useEffect(() => {
         getImages()
     }, [])
+
+    // 페이지네이션 페이지 변경시 API 호출
+    useEffect(() => {
+        setPage(1)
+        getImages()
+    }, [searchValue])
 
     // 페이지네이션 페이지 변경시 API 호출
     useEffect(() => {
@@ -60,7 +64,7 @@ function Home() {
                         인터넷의 시작 자료 출처입니다. <br />
                         모든 지역에 있는 크리에이터들의 지원을 받습니다.
                     </span>
-                    <SearchBox />
+                    <SearchBox funcSetValue={setSearchValue} />
                 </div>
             </div>
             <div className="page__image-box">{cardList}</div>
