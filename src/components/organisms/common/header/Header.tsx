@@ -14,6 +14,10 @@ function Header({ funcSetValue, funcPage }: Props) {
         funcPage(1)
     }
 
+    const addBookmark = () => {
+        window.alert("즐겨찾기 추가는 크롬 결제로 인해 기능 개발 하지 않았습니다.")
+    }
+
     return (
         <div className="header">
             <div className="header__logo-box" onClick={moveToHome}>
@@ -22,7 +26,9 @@ function Header({ funcSetValue, funcPage }: Props) {
             <div className="header__function-box">
                 <button className="header__function-box__button">사진제출</button>
                 <button className="header__function-box__button">
-                    <span className="label">북마크</span>
+                    <span className="label" onClick={addBookmark}>
+                        북마크
+                    </span>
                     <span className="material-symbols-outlined">favorite</span>{" "}
                 </button>
                 <span>Evie | evie@willog.io</span>
