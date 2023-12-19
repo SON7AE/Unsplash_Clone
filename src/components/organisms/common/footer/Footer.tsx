@@ -17,6 +17,10 @@ function Footer({ page, totalPage, funcPage }: Props) {
         if (page >= totalPage) return
         else funcPage(page + 1)
     }
+    const moveToPage = (selected: number) => {
+        console.log(selected + "페이지 버튼이 선택되었습니다.")
+        funcPage(selected)
+    }
 
     // 페이지 리스트 UI 생성
     const newArray = new Array()
@@ -24,8 +28,12 @@ function Footer({ page, totalPage, funcPage }: Props) {
         newArray.push(i)
     }
 
-    const pages = newArray.map((page: number, index: number) => {
-        return <button className="pagination__button">{page}</button>
+    const pages = newArray.map((item: number, index: number) => {
+        return (
+            <button className={`pagination__button ${index === page - 1 ? "active" : "inactive"}`} key={item} onClick={() => moveToPage(item)}>
+                {item}
+            </button>
+        )
     })
 
     return (
