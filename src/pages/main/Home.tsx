@@ -21,7 +21,7 @@ function Home() {
     const [open, setOpen] = useState(false)
     const [dialogData, setDialogData] = useState({})
 
-    const searchValue = null
+    const searchValue = "one color"
 
     // API 호출
     const getImages = async () => {

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./footer.scss"
 
 interface Props {
@@ -7,28 +8,48 @@ interface Props {
 }
 
 function Footer({ page, totalPage, funcPage }: Props) {
+    const [step, setStep] = useState(0)
+
+    // 페이지 리스트 UI 생성
+    const newArr: number[] = new Array()
+    for (let i = 1; i <= totalPage; i++) {
+        newArr.push(i)
+    }
+
+    const length = newArr.length
+    const divide = Math.floor(length / 10) + (Math.floor(length % 10) > 0 ? 1 : 0)
+    const res = new Array()
+
+    for (let i = 0; i <= divide; i++) {
+        // 배열 0부터 n개씩 잘라 새 배열에 넣기
+        res.push(newArr.splice(0, 10))
+    }
+
+    // ----------------------------------------------------------------------------------------------------
+
     const moveToPrev = () => {
         console.log("이전 버튼이 선택되었습니다.")
-        if (page <= 1) return
-        else funcPage(page - 1)
+        if (step === 0) {
+            return
+        } else {
+            setStep(step - 1)
+        }
     }
     const moveToNext = () => {
         console.log("다음 버튼이 선택되었습니다.")
-        if (page >= totalPage) return
-        else funcPage(page + 1)
+        if (step < res[step].length - 2) {
+            setStep(step + 1)
+        } else {
+            return
+        }
     }
     const moveToPage = (selected: number) => {
-        console.log(selected + "페이지 버튼이 선택되었습니다.")
         funcPage(selected)
     }
 
-    // 페이지 리스트 UI 생성
-    const newArray = new Array()
-    for (let i = 1; i <= totalPage; i++) {
-        newArray.push(i)
-    }
+    // ----------------------------------------------------------------------------------------------------
 
-    const pages = newArray.map((item: number, index: number) => {
+    const pages = res[step].map((item: number, index: number) => {
         return (
             <button className={`pagination__button ${index === page - 1 ? "active" : "inactive"}`} key={item} onClick={() => moveToPage(item)}>
                 {item}

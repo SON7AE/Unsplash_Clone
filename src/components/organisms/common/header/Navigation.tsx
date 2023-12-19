@@ -21,6 +21,7 @@ function Navigation() {
             index: 1,
             path: "/following",
             label: "팔로잉",
+            searchValue: "following",
             isActive: false,
         },
         {
