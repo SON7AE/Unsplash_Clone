@@ -15,7 +15,7 @@ function Header({ funcSetValue, funcPage }: Props) {
     }
 
     const addBookmark = () => {
-        window.alert("즐겨찾기 추가는 크롬 결제로 인해 기능 개발 하지 않았습니다.")
+        window.alert("북마크 된 페이지로 이동")
     }
 
     return (

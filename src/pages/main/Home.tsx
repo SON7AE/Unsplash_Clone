@@ -28,6 +28,7 @@ function Home() {
             const res = await axios.get(`${API_URL}?query=${searchValue}&client_id=${API_KEY}&page=${page}&per_page=${PER_PAGE}`)
             setImages(res.data.results)
             setTotalPage(res.data.total_pages)
+            console.log(res.data.results)
         } catch (error) {
             console.log(error)
         }

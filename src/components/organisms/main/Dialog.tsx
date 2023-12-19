@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import "./dialog.scss"
 
 interface Props {
@@ -26,6 +26,14 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
         return () => window.removeEventListener("keydown", escKeyModalClose) // 위의 이벤트를 제거
     }, [funcOpen])
 
+    // ----------------------------------------------------------------------------------------------------
+
+    const [isAdded, setIsAdded] = useState(false)
+    const addBookmark = () => {
+        window.alert("북마크 추가 기능은 완성하지 못했습니다.")
+        setIsAdded(!isAdded)
+    }
+
     const DialogContents = () => {
         return (
             <div className="dialog-layout">
@@ -39,7 +47,7 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
                             <span className="author-name">{props.user.name}</span>
                         </div>
                         <div className="dialog__header__button-box">
-                            <button className="bookmark">
+                            <button className={`bookmark ${isAdded ? "active" : "inactive"}`} onClick={() => addBookmark}>
                                 <span className="material-symbols-outlined">favorite</span>
                             </button>
                             <button className="download">다운로드</button>

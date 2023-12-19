@@ -80,8 +80,18 @@
 
                 color: $color-gray-600;
 
+                .material-symbols-outlined {
+                    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+                }
+
                 &:hover {
                     .material-symbols-outlined {
+                        color: $color-error-600;
+                    }
+                }
+                &.active {
+                    .material-symbols-outlined {
+                        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
                         color: $color-error-600;
                     }
                 }
