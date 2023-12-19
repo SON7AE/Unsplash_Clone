@@ -29,6 +29,8 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
     // ----------------------------------------------------------------------------------------------------
 
     const addBookmark = (image: any) => {
+        window.alert("북마크에 추가되었습니다.")
+
         const storedData = localStorage.getItem("bookmarks")
         let newData = {
             url: image.urls.small,
@@ -49,6 +51,9 @@ function Dialog({ isOpen, props, funcOpen, setDetail }: Props) {
 
             localStorage.setItem("bookmarks", JSON.stringify(newArr))
         }
+
+        funcOpen(false)
+        setDetail({})
     }
 
     const DialogContents = () => {
