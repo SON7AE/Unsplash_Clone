@@ -16,6 +16,7 @@ function Header({ funcSetValue, funcPage }: Props) {
 
     const addBookmark = () => {
         window.alert("북마크 된 페이지로 이동")
+        navigate("/bookmarks")
     }
 
     return (
